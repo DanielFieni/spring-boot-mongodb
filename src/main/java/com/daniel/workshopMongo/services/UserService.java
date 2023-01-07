@@ -28,10 +28,17 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object No Found"));
 	}
 	
-	// Insert new user in database
+	// Insert new user from database
 	public User insert(User obj)
 	{
 		return repo.insert(obj);
+	}
+	
+	// Delete use from database
+	public void delete(String id)
+	{
+		findById(id);
+		repo.deleteById(id);
 	}
 	
 	public User fromDTO(UserDTO obj)
