@@ -1,5 +1,6 @@
 package com.daniel.workshopMongo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class PostService {
 	{
 		Optional<Post> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+	}
+	
+	// Find text in a title
+	public List<Post> findTitle(String text)
+	{
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
 	
 }
